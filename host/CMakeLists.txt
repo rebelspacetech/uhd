@@ -182,9 +182,12 @@ include_directories(${UHD_SOURCE_DIR}/include)
 # Static Lib Configuration
 ########################################################################
 option(ENABLE_STATIC_LIBS "Enable building of static libraries" OFF)
-if(ENABLE_STATIC_LIBS)
-    message(STATUS "Building Static Libraries: ${ENABLE_STATIC_LIBS}")
-endif(ENABLE_STATIC_LIBS)
+
+# NOTE : it is the RebelCore custom flag that actually determines if the
+#  build is static
+if(CUSTOM_UHD_STATIC_BUILD)
+    message(STATUS "Building Static Libraries: ${CUSTOM_UHD_STATIC_BUILD}")
+endif(CUSTOM_UHD_STATIC_BUILD)
 
 ########################################################################
 # On Apple only, set install name and use rpath correctly, if not already set
