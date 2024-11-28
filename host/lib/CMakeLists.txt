@@ -240,7 +240,9 @@ endif(NOT UHDHOST_PKG)
 #######################################################
 # Setup libuhd library (static)
 #######################################################
-if(ENABLE_STATIC_LIBS)
+
+# NOTE : use RebelCore custom flag here to fix issue with this build
+if(CUSTOM_UHD_STATIC_BUILD)
     add_library(uhd_static STATIC ${libuhd_sources} $<TARGET_OBJECTS:uhd_rc>)
     set_target_properties(uhd_static PROPERTIES OUTPUT_NAME uhd)
     set_target_properties(uhd_static PROPERTIES COMPILE_DEFINITIONS UHD_STATIC_LIB)
@@ -248,4 +250,4 @@ if(ENABLE_STATIC_LIBS)
     install(TARGETS uhd_static
         ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib or .a file
     )
-endif(ENABLE_STATIC_LIBS)
+endif(CUSTOM_UHD_STATIC_BUILD)
